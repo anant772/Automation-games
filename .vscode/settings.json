@@ -1,0 +1,5 @@
+{
+    "aline.autocomplete.enable": true,
+    "CodeGPT.apiKey": "Ollama",
+    "python.analysis.autoImportCompletions": true
+}

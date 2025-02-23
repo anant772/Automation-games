@@ -1,0 +1,77 @@
+import random
+import pyautogui
+import keyboard
+import time
+
+points = []
+
+def record_points():
+    print("Press 'r' to record a point. Press 'q' to quit recording.")
+    while True:
+        if keyboard.is_pressed('r'):  # Record a point
+            x, y = pyautogui.position()
+            points.append((x, y))
+            time.sleep(0.5)  # Prevent duplicate recordings
+
+        if keyboard.is_pressed('q'):  # Quit recording
+            print("Stopped recording.")
+            break
+
+    return points
+
+
+def perform_clicks(points, longPoints):
+    print("Starting to click on recorded points...")
+    for i in range(200):
+        j = 0
+        for i in range(20):
+                    longCLick(longPoints[0],longPoints[1])
+        for point in points:
+            if(j==2):
+                time.sleep(4)
+            if j == 4:
+                for x in range(30):
+                    pyautogui.click(point)
+                    print(f"Clicked at: {point}")
+                    time.sleep(0.2)  # Small delay between clicks 
+                j = j+ 1
+            else:
+                pyautogui.click(point)
+                print(f"Clicked at: {point}")
+                time.sleep(0.5)  # Small delay between clicks
+                j = j+ 1
+
+
+def longCLick(x, y):
+    x += random.randint(-2, 2)
+    y += random.randint(-2, 2)
+    pyautogui.moveTo(x, y) 
+    pyautogui.mouseDown()
+    time.sleep(0.1)
+    pyautogui.mouseUp()
+
+
+def main():
+
+    # longPoints = []
+    # points = []
+    points = [(1083, 895), (950, 537), (1065, 224), (1126, 524), (1067, 305), (1201, 239), (1083, 895)]
+    longPoints = [1422, 444]
+    # [(1422, 444)]
+    print("Welcome to the Sailing Recorder and Clicker!")
+
+    if points or longPoints:
+        while True:
+            if keyboard.is_pressed('s'):
+                perform_clicks(points, longPoints)
+    else:
+        points = record_points()
+        
+        if points:
+            print(f"Recorded {len(points)} points: {points}")
+            print(points)
+        else:
+            print("No points recorded. Exiting.")
+
+if __name__ == "__main__":
+    main()

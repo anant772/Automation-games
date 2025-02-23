@@ -1,0 +1,8 @@
+timer,images/timer.png
+sailing,images/sailing.png
+summoning,images/summoning.png
+gaming,images/gaming.png
+gardening,images/gardening.png
+candy,images/candy.png
+dungeon,images/dungeon.png
+Bubo,images/Bubo.png
